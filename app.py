@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template_string
+from flask import Flask, request, render_template
 import requests
 
 app = Flask(__name__)
@@ -25,7 +25,6 @@ def home():
         strength = request.form.get('strength')
         pokemon_name = request.form.get('pokemon_name').lower()
 
-
         if not strength.isdigit():
             result = "Error: The bench weight must be an integer. \nPlease enter a valid number."
         else:
@@ -37,40 +36,9 @@ def home():
                 else:
                     result = f"Sorry, you are not strong enough.\n{pokemon_name} weighs {pokemon_info['weight']} pounds \nwhile you only bench {strength} pounds."
             else:
-                result = f"{pokemon_name} doesnt exist, check spelling and try again."
+                result = f"{pokemon_name} doesn't exist, check spelling and try again."
 
-    return render_template_string('''
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <title>PokéBench</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-        <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
-        <style>
-        @import url('https://fonts.cdnfonts.com/css/pokemon-solid');
-        </style>
-        <style> 
-        @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
-        </style>
-    </head>
-    <body>
-        <h1>PokéBench</h1>
-        <form method="post">
-            <label>How much do you bench? (in pounds):</label><br>
-            <input type="text" name="strength"><br><br>
-            <label>Choose a Pokémon:</label><br>
-            <input type="text" name="pokemon_name"><br><br>
-            <input type="submit" value="Submit">
-        </form>
-        <div class="response-container">
-            <p style="white-space: pre-line;">{{ result }}</p>
-        </div>
-    </body>
-    </html>
-''', result=result)
-
-
-
+    return render_template('index.html', result=result)
 
 if __name__ == '__main__':
     app.run(debug=True)
