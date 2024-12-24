@@ -15,7 +15,7 @@ Created using Flask, Python, CSS, and HTML. First project using Flask and also w
 
 ## Future Plans
 
-Make images of the pokemon that you picked show up when you hit submit 
+Make images of the pokemon that you picked show up when you hit submit (DONE! 12/23) 
 
 ## Screens 
 
