@@ -21,4 +21,4 @@ Make images of the pokemon that you picked show up when you hit submit (DONE! 12
 
 <img width="1728" alt="IMG_0115" src="https://github.com/user-attachments/assets/7218cc9f-f4ef-4935-9416-d80e499281bc" />
 
-<img width="457" alt="IMG_8837" src="https://github.com/user-attachments/assets/909cec6e-3627-4642-a5f8-24b3613e1f9c" />
+<img width="518" alt="IMG_4546" src="https://github.com/user-attachments/assets/ef650f80-77c5-496c-b2ea-224611f22766" />
