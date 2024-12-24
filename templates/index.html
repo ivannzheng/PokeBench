@@ -21,6 +21,9 @@
     </form>
     <div class="response-container">
         <p style="white-space: pre-line;">{{ result }}</p>
+        {% if image_url %}
+            <img src="{{ image_url }}" alt="Pokemon Image" style="width: 150px; height: 150px; margin-top: 20px;">
+        {% endif %}
     </div>
 </body>
 </html>

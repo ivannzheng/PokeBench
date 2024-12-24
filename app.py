@@ -11,7 +11,8 @@ def get_pokemon_info(name):
     
     if response.status_code == 200:
         pokemon_data = response.json() 
-        return pokemon_data
+        image_url = pokemon_data["sprites"]["front_default"]
+        return {"weight": pokemon_data["weight"], "image_url": image_url}
     else:
         return None
     
@@ -20,6 +21,7 @@ def get_pokemon_info(name):
 def home():
     result = ""
     pokemon_info = None  
+    image_url = None
     
     if request.method == 'POST':
         strength = request.form.get('strength')
@@ -31,6 +33,7 @@ def home():
             pokemon_info = get_pokemon_info(pokemon_name)
 
             if pokemon_info:
+                image_url = pokemon_info["image_url"]
                 if int(strength) > int(pokemon_info["weight"]):
                     result = f"Congrats! You are strong enough! \n{pokemon_name} weighs {pokemon_info['weight']} pounds \nwhile you bench {strength} pounds."
                 else:
@@ -38,7 +41,7 @@ def home():
             else:
                 result = f"{pokemon_name} doesn't exist, check spelling and try again."
 
-    return render_template('index.html', result=result)
+    return render_template('index.html', result=result, image_url=image_url)
 
 if __name__ == '__main__':
     app.run(debug=True)
